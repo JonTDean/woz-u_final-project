@@ -1,11 +1,17 @@
 {
-  "name": "final_project",
-  "version": "0.0.1",
-  "description": "Final Project for Woz-U",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Jonathan Thomas Dean",
-  "license": "ISC"
+	"name": "final_project",
+	"version": "0.0.1",
+	"description": "Final Project for Woz-U",
+	"main": "index.js",
+	"scripts": {
+		"start": "node server",
+		"react": "npm start --prefix frontend",
+		"api": "dotnet run --project ./API/",
+		"stack": "concurrently \"npm run react\" \"npm run api\" "
+	},
+	"author": "Jonathan Thomas Dean",
+	"license": "ISC",
+	"dependencies": {
+		"concurrently": "^6.0.0"
+	}
 }
