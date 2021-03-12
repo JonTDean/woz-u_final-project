@@ -1,3 +1,4 @@
+using System;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,10 +23,11 @@ namespace API.Controllers
         public async Task<ActionResult<AppUser>> Register(RegisterDTO registerDTO)
         {
             if (await UserExists(registerDTO.Username)) return BadRequest("Username is taken");
+            // if (await String.IsNullOrEmpty(registerDTO.Username)) return BadRequest("Username is Empty");
             
-            using var hmac = new HMACSHA512();
+            using HMACSHA512 hmac = new HMACSHA512();
             
-            var user = new AppUser
+            AppUser user = new AppUser
             {
                 UserName = registerDTO.Username.ToLower(),
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password)),
@@ -37,7 +39,23 @@ namespace API.Controllers
 
             return user;
         }
+        
+        [HttpPost("login")]
+        public async Task<ActionResult<AppUser>> Login(LoginDTO loginDTO){
+            AppUser user = await _context.Users
+                .SingleOrDefaultAsync(user => user.UserName == loginDTO.Username.ToLower());
 
+            if (user == null) return Unauthorized("Invalid username");
+
+            using HMACSHA512 hmac = new HMACSHA512(user.PasswordSalt);
+            byte[] computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDTO.Password));
+            
+            for(int i = 0; i < computedHash.Length; i++){
+                if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid Password.");
+            }
+
+            return user;
+        }
         private async Task<bool> UserExists(string username)
         {
             return await _context.Users.AnyAsync(user => user.UserName == username.ToLower());
