@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "lrOlBT1thErJEwLUxvgvbdWBUGNF4FFzWpvmrXTLygNTU0euA+NxR3HJUkEdR7VN8+37TR0kiPK79oD7LDhzLw==",
+  "dgSpecHash": "UrJT0KfQB4L0gZZNZ6go9xoU9+PaZ9gmbVQBzi9hEizWK7gIIYUxqbkvRbgU71JWkj3PVXTYMAM/VqvpxzkS9w==",
   "success": true,
   "projectFilePath": "/home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/API.csproj",
   "expectedPackageFiles": [
     "/home/jon/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
+    "/home/jon/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
     "/home/jon/.nuget/packages/microsoft.data.sqlite.core/6.0.0-preview.2.21154.2/microsoft.data.sqlite.core.6.0.0-preview.2.21154.2.nupkg.sha512",
     "/home/jon/.nuget/packages/microsoft.entityframeworkcore/6.0.0-preview.2.21154.2/microsoft.entityframeworkcore.6.0.0-preview.2.21154.2.nupkg.sha512",
     "/home/jon/.nuget/packages/microsoft.entityframeworkcore.abstractions/6.0.0-preview.2.21154.2/microsoft.entityframeworkcore.abstractions.6.0.0-preview.2.21154.2.nupkg.sha512",
@@ -24,6 +25,9 @@
     "/home/jon/.nuget/packages/microsoft.extensions.logging.abstractions/6.0.0-preview.2.21154.6/microsoft.extensions.logging.abstractions.6.0.0-preview.2.21154.6.nupkg.sha512",
     "/home/jon/.nuget/packages/microsoft.extensions.options/6.0.0-preview.2.21154.6/microsoft.extensions.options.6.0.0-preview.2.21154.6.nupkg.sha512",
     "/home/jon/.nuget/packages/microsoft.extensions.primitives/6.0.0-preview.2.21154.6/microsoft.extensions.primitives.6.0.0-preview.2.21154.6.nupkg.sha512",
+    "/home/jon/.nuget/packages/microsoft.identitymodel.jsonwebtokens/6.8.0/microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg.sha512",
+    "/home/jon/.nuget/packages/microsoft.identitymodel.logging/6.8.0/microsoft.identitymodel.logging.6.8.0.nupkg.sha512",
+    "/home/jon/.nuget/packages/microsoft.identitymodel.tokens/6.8.0/microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
     "/home/jon/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.0.5-pre20210119130047/sqlitepclraw.bundle_e_sqlite3.2.0.5-pre20210119130047.nupkg.sha512",
     "/home/jon/.nuget/packages/sqlitepclraw.core/2.0.5-pre20210119130047/sqlitepclraw.core.2.0.5-pre20210119130047.nupkg.sha512",
     "/home/jon/.nuget/packages/sqlitepclraw.lib.e_sqlite3/2.0.5-pre20210119130047/sqlitepclraw.lib.e_sqlite3.2.0.5-pre20210119130047.nupkg.sha512",
@@ -31,8 +35,10 @@
     "/home/jon/.nuget/packages/system.collections.immutable/6.0.0-preview.2.21154.6/system.collections.immutable.6.0.0-preview.2.21154.6.nupkg.sha512",
     "/home/jon/.nuget/packages/system.componentmodel.annotations/6.0.0-preview.2.21154.6/system.componentmodel.annotations.6.0.0-preview.2.21154.6.nupkg.sha512",
     "/home/jon/.nuget/packages/system.diagnostics.diagnosticsource/6.0.0-preview.2.21154.6/system.diagnostics.diagnosticsource.6.0.0-preview.2.21154.6.nupkg.sha512",
+    "/home/jon/.nuget/packages/system.identitymodel.tokens.jwt/6.8.0/system.identitymodel.tokens.jwt.6.8.0.nupkg.sha512",
     "/home/jon/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
     "/home/jon/.nuget/packages/system.runtime.compilerservices.unsafe/6.0.0-preview.2.21154.6/system.runtime.compilerservices.unsafe.6.0.0-preview.2.21154.6.nupkg.sha512",
+    "/home/jon/.nuget/packages/system.security.cryptography.cng/4.5.0/system.security.cryptography.cng.4.5.0.nupkg.sha512",
     "/home/jon/.nuget/packages/system.text.encodings.web/6.0.0-preview.2.21154.6/system.text.encodings.web.6.0.0-preview.2.21154.6.nupkg.sha512",
     "/home/jon/.nuget/packages/system.text.json/6.0.0-preview.2.21154.6/system.text.json.6.0.0-preview.2.21154.6.nupkg.sha512"
   ],
