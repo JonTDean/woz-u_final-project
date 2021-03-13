@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "UrJT0KfQB4L0gZZNZ6go9xoU9+PaZ9gmbVQBzi9hEizWK7gIIYUxqbkvRbgU71JWkj3PVXTYMAM/VqvpxzkS9w==",
+  "dgSpecHash": "zSmK9H34g4GEVH1BhqKhCKlyXGx6+98a8nzEgfpPU/RnvorG7OiVIblp/l5kT+Fj2S1khCZtENJYAY7Gftq85A==",
   "success": true,
   "projectFilePath": "/home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/API.csproj",
   "expectedPackageFiles": [
     "/home/jon/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
+    "/home/jon/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/5.0.4/microsoft.aspnetcore.authentication.jwtbearer.5.0.4.nupkg.sha512",
     "/home/jon/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
     "/home/jon/.nuget/packages/microsoft.data.sqlite.core/6.0.0-preview.2.21154.2/microsoft.data.sqlite.core.6.0.0-preview.2.21154.2.nupkg.sha512",
     "/home/jon/.nuget/packages/microsoft.entityframeworkcore/6.0.0-preview.2.21154.2/microsoft.entityframeworkcore.6.0.0-preview.2.21154.2.nupkg.sha512",
@@ -27,6 +28,8 @@
     "/home/jon/.nuget/packages/microsoft.extensions.primitives/6.0.0-preview.2.21154.6/microsoft.extensions.primitives.6.0.0-preview.2.21154.6.nupkg.sha512",
     "/home/jon/.nuget/packages/microsoft.identitymodel.jsonwebtokens/6.8.0/microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg.sha512",
     "/home/jon/.nuget/packages/microsoft.identitymodel.logging/6.8.0/microsoft.identitymodel.logging.6.8.0.nupkg.sha512",
+    "/home/jon/.nuget/packages/microsoft.identitymodel.protocols/6.7.1/microsoft.identitymodel.protocols.6.7.1.nupkg.sha512",
+    "/home/jon/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/6.7.1/microsoft.identitymodel.protocols.openidconnect.6.7.1.nupkg.sha512",
     "/home/jon/.nuget/packages/microsoft.identitymodel.tokens/6.8.0/microsoft.identitymodel.tokens.6.8.0.nupkg.sha512",
     "/home/jon/.nuget/packages/sqlitepclraw.bundle_e_sqlite3/2.0.5-pre20210119130047/sqlitepclraw.bundle_e_sqlite3.2.0.5-pre20210119130047.nupkg.sha512",
     "/home/jon/.nuget/packages/sqlitepclraw.core/2.0.5-pre20210119130047/sqlitepclraw.core.2.0.5-pre20210119130047.nupkg.sha512",

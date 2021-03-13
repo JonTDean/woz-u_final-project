@@ -18,6 +18,7 @@ namespace API.Controllers
 
         public AccountController(DataContext context, ITokenService tokenService)
         {
+            _tokenService = tokenService;
             _context = context;
 
         }
@@ -26,11 +27,10 @@ namespace API.Controllers
         public async Task<ActionResult<UserDTO>> Register(RegisterDTO registerDTO)
         {
             if (await UserExists(registerDTO.Username)) return BadRequest("Username is taken");
-            // if (await String.IsNullOrEmpty(registerDTO.Username)) return BadRequest("Username is Empty");
             
-            using HMACSHA512 hmac = new HMACSHA512();
+            using var hmac = new HMACSHA512();
             
-            AppUser user = new AppUser
+            var user = new AppUser
             {
                 UserName = registerDTO.Username.ToLower(),
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password)),
@@ -40,11 +40,13 @@ namespace API.Controllers
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
-            return new UserDTO
+            var newUser = new UserDTO
             {
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
             };
+
+            return newUser; 
         }
         
         [HttpPost("login")]
@@ -61,11 +63,13 @@ namespace API.Controllers
                 if (computedHash[i] != user.PasswordHash[i]) return Unauthorized("Invalid Password.");
             }
 
-            return new UserDTO
+            var authenticatedUser = new UserDTO
             {
                 Username = user.UserName,
                 Token = _tokenService.CreateToken(user),
             };
+
+            return authenticatedUser; 
         }
 
         private async Task<bool> UserExists(string username)

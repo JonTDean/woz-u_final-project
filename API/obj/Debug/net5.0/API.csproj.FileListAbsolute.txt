@@ -62,3 +62,10 @@
 /home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/bin/Debug/net5.0/System.Runtime.CompilerServices.Unsafe.dll
 /home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/bin/Debug/net5.0/System.Text.Encodings.Web.dll
 /home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/bin/Debug/net5.0/System.Text.Json.dll
+/home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/bin/Debug/net5.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/bin/Debug/net5.0/Microsoft.IdentityModel.Logging.dll
+/home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
+/home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll
+/home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/bin/Debug/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.dll
+/home/jon/Documents/Programming/School/Woz-U/Unfinished/final_project/API/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
