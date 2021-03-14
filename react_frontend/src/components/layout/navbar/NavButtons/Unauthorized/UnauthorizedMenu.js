@@ -1,4 +1,3 @@
-
 // React
 import React, { useState } from 'react';
 // Material-UI
@@ -10,7 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import LoginButton from './LoginButton';
 import RegisterButton from './RegisterButton';
 
-const useStyles = makeStyles((theme) => ({
+const centerStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
 		flexDirection: 'column',
@@ -22,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function UnauthorizedMenu() {
-	const classes = useStyles();
+	const classes = centerStyles();
 	const [anchorEl, setAnchorEl] = useState(null);
 
 	const handleClick = (event) => {

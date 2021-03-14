@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 // MaterialUI
 import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { centerStyle } from '../style/makeStyles/_index';
 
 export default function useForms(initialState) {
 	const [formData, setFormData] = useState(initialState);
@@ -23,20 +23,8 @@ export default function useForms(initialState) {
 	};
 }
 
-const useStyles = makeStyles((theme) => ({
-	root: {
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		marginTop: '3em',
-		'& > *': {
-			margin: theme.spacing(1),
-		},
-	},
-}));
-
 export function FormContainer({ children }) {
-	const classes = useStyles();
+	const classes = centerStyle();
 
 	return (
 		<form>

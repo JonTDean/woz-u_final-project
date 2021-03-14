@@ -12,6 +12,8 @@
 	"author": "Jonathan Thomas Dean",
 	"license": "ISC",
 	"dependencies": {
-		"concurrently": "^6.0.0"
+		"concurrently": "^6.0.0",
+		"redux": "^4.0.5",
+		"redux-devtools-extension": "^2.13.9"
 	}
 }

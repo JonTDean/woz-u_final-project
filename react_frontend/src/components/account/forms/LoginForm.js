@@ -5,6 +5,8 @@ import useForms, { FormContainer } from '../../../hooks/useForms';
 import { Grid, TextField, Button } from '@material-ui/core';
 // Utils
 import Login from '../../utils/API/Users/Login';
+// Components
+import RegisterReroute from './misc/RegisterReroute';
 
 const initialState = {
 	username: '',
@@ -49,6 +51,7 @@ function LoginForm() {
 					Login
 				</Button>
 			</FormContainer>
+			<RegisterReroute />
 		</Grid>
 	);
 }
