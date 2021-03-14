@@ -1,12 +1,17 @@
 import '../style/App.css';
-import User from './users/User';
+import { Route } from 'react-router-dom';
+//Components
+import NavbarMain from './layout/navbar/NavbarMain';
+import Landing from './layout/Landing';
+import UnauthorizedRoutes from './routes/UnauthorizedRoutes';
 
 function App() {
 	return (
-		<div className="App">
-			<h1>Current Users</h1>
-			<User />
-		</div>
+		<>
+			<NavbarMain />
+			<Route exact path="/" component={Landing} />
+			<UnauthorizedRoutes />
+		</>
 	);
 }
 
