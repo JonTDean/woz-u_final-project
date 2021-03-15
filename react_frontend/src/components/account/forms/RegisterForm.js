@@ -1,6 +1,10 @@
 // React
 import React from 'react';
 import useForms, { FormContainer } from '../../../hooks/useForms';
+// Redux
+import { connect } from 'react-redux';
+import { setAlert } from '../../../redux/actions/alert';
+import PropTypes from 'prop-types';
 // MaterialUI
 import { Grid, TextField, Button } from '@material-ui/core';
 // Utils
@@ -14,26 +18,10 @@ const initialState = {
 	passwordConfirm: '',
 };
 
-function RegisterForm() {
+function RegisterForm({ setAlert }) {
 	const { formData, setFormData, handleInputChange } = useForms(initialState);
 
 	const { username, password, passwordConfirm } = formData;
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		if (password !== passwordConfirm) {
-			console.log('Passwords do not match');
-		} else {
-			// console.log('Login Success, User Data ---');
-			// console.log(`Form Data: `, formData);
-			const newAccount = {
-				username,
-				password,
-			};
-
-			Register(newAccount);
-		}
-	};
 
 	return (
 		<Grid container direction="column" justify="center" alignItems="center">
@@ -59,7 +47,12 @@ function RegisterForm() {
 					value={passwordConfirm}
 					onChange={handleInputChange}
 				/>
-				<Button color="inherit" onClick={handleSubmit}>
+				<Button
+					color="inherit"
+					onClick={(e) =>
+						handleSubmit(e, setAlert, username, password, passwordConfirm)
+					}
+				>
 					Register
 				</Button>
 			</FormContainer>
@@ -68,4 +61,24 @@ function RegisterForm() {
 	);
 }
 
-export default RegisterForm;
+function handleSubmit(e, alert, username, password, passwordConfirm) {
+	e.preventDefault();
+	if (password !== passwordConfirm) {
+		alert('Passwords do not match!', 'danger');
+	} else {
+		// console.log('Login Success, User Data ---');
+		// console.log(`Form Data: `, formData);
+		// const newAccount = {
+		// 	username,
+		// 	password,
+		// };
+
+		Register({ username, password });
+	}
+}
+
+Register.propTypes = {
+	setAlert: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert })(RegisterForm);
