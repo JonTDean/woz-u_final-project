@@ -21,7 +21,10 @@ export default function LoginReroute() {
 
 	return (
 		<div className={classes.root}>
-			<Link to="/account/login">login here</Link>
+			<p>Have an account?</p>
+			<p>
+				Login <Link to="/account/login">here</Link>
+			</p>
 		</div>
 	);
 }

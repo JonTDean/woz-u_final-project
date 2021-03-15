@@ -18,6 +18,7 @@ const initialState = {
 	passwordConfirm: '',
 };
 
+// Registration form with Material Design
 function RegisterForm({ setAlert }) {
 	const { formData, setFormData, handleInputChange } = useForms(initialState);
 
@@ -52,6 +53,8 @@ function RegisterForm({ setAlert }) {
 					onClick={(e) =>
 						handleSubmit(e, setAlert, username, password, passwordConfirm)
 					}
+					variant="contained"
+					color="primary"
 				>
 					Register
 				</Button>
@@ -66,13 +69,6 @@ function handleSubmit(e, alert, username, password, passwordConfirm) {
 	if (password !== passwordConfirm) {
 		alert('Passwords do not match!', 'danger');
 	} else {
-		// console.log('Login Success, User Data ---');
-		// console.log(`Form Data: `, formData);
-		// const newAccount = {
-		// 	username,
-		// 	password,
-		// };
-
 		Register({ username, password });
 	}
 }

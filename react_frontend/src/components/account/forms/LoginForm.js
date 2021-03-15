@@ -20,8 +20,6 @@ function LoginForm() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// console.log('Login Success, User Data ---');
-		// console.log(`Form Data: `, formData);
 		const userAccount = {
 			username,
 			password,
@@ -47,7 +45,12 @@ function LoginForm() {
 					value={password}
 					onChange={handleInputChange}
 				/>
-				<Button color="inherit" onClick={handleSubmit}>
+				<Button
+					color="inherit"
+					onClick={handleSubmit}
+					variant="contained"
+					color="primary"
+				>
 					Login
 				</Button>
 			</FormContainer>

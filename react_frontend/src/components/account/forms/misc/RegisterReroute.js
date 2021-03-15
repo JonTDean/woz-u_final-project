@@ -22,7 +22,9 @@ export default function RegisterReroute() {
 	return (
 		<div className={classes.root}>
 			<p>Want to create a new account?</p>
-			<Link to="/account/register">Register here</Link>
+			<p>
+				Register <Link to="/account/register">here</Link>
+			</p>
 		</div>
 	);
 }

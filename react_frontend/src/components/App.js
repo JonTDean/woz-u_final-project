@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import NavbarMain from './layout/navbar/NavbarMain';
 import Landing from './layout/Landing';
 import UnauthorizedRoutes from './routes/UnauthorizedRoutes';
+import Alert from './utils/Alert/Alert';
 
 function App() {
 	return (
@@ -11,6 +12,7 @@ function App() {
 			<NavbarMain />
 			<Route exact path="/" component={Landing} />
 			<UnauthorizedRoutes />
+			<Alert />
 		</>
 	);
 }
