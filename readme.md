@@ -1,8 +1,7 @@
 # Final for Woz-U
 
-Links:
-    - Heroku (API):  
-    - Netlify (Frontend):
+Links: - Heroku (API):  
+ - Netlify (Frontend):
 
 ## Locally Run
 
@@ -13,7 +12,3 @@ location: Root of Final Project Directory
 ```zsh
     npm run stack
 ```
-
-## Sites to Develop On
-
-
