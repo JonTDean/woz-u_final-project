@@ -2,17 +2,26 @@
 import React from 'react';
 // Redux
 import PropTypes from 'prop-types';
-// Component
-// import Button from '@material-ui/core/button';
+import { connect } from 'react-redux';
+import { Logout } from '../../../../../redux/actions/auth';
+// Material
+import { MenuItem } from '@material-ui/core';
+// Components
 
-function LogoutButton(props) {
+function LogoutButton({ Logout }) {
+	const handleClick = () => {
+		Logout();
+	};
+
 	return (
-		<div>
-			{/* <Button></Button> */}
-		</div>
+		<>
+			<MenuItem onClick={handleClick}>Logout</MenuItem>
+		</>
 	);
 }
 
-LogoutButton.propTypes = {};
+LogoutButton.propTypes = {
+	Logout: PropTypes.func.isRequired,
+};
 
-export default LogoutButton;
+export default connect(null, { Logout })(LogoutButton);

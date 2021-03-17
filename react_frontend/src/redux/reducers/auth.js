@@ -22,9 +22,10 @@ function auth(state = initialState, action) {
 		case USER_LOADED:
 			return {
 				...state,
+				token: payload.token,
 				isAuthenticated: true,
 				loading: false,
-				user: payload,
+				user: payload.username,
 			};
 		case REGISTER_SUCCESS:
 		case LOGIN_SUCCESS:
@@ -34,16 +35,20 @@ function auth(state = initialState, action) {
 				...payload,
 				isAuthenticated: true,
 				loading: false,
+				user: payload.username,
 			};
 		case REGISTER_FAIL:
 		case LOGIN_FAIL:
+		case LOGOUT:
 		case AUTH_ERROR:
-			localStorage.removeItem(' token');
+			localStorage.removeItem('token');
+			localStorage.removeItem('user');
 			return {
 				...state,
 				token: null,
 				isAuthenticated: false,
 				loading: false,
+				user: null,
 			};
 		default:
 			return state;

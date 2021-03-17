@@ -8,6 +8,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 // Menu Buttons
 import LoginButton from './LoginButton';
 import RegisterButton from './RegisterButton';
+import { Link } from 'react-router-dom';
 
 const centerStyles = makeStyles((theme) => ({
 	root: {
@@ -25,7 +26,7 @@ function UnauthorizedMenu() {
 	const [anchorEl, setAnchorEl] = useState(null);
 
 	const handleClick = (event) => {
-		console.log(event.currentTarget);
+		// console.log(event.currentTarget);
 		setAnchorEl(event.currentTarget);
 	};
 
@@ -51,8 +52,12 @@ function UnauthorizedMenu() {
 				open={Boolean(anchorEl)}
 				onClose={handleClose}
 			>
-				<LoginButton onClick={handleClose} />
-				<RegisterButton onClick={handleClose} />
+				<Link to="/account/login">
+					<LoginButton onClick={handleClose} />
+				</Link>
+				<Link to="/account/register">
+					<RegisterButton onClick={handleClose} />
+				</Link>
 			</Menu>
 		</>
 	);

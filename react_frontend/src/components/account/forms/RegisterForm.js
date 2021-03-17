@@ -22,7 +22,7 @@ const initialState = {
 
 // Registration form with Material Design
 function RegisterForm({ setAlert, Register, isAuthenticated }) {
-	const { formData, setFormData, handleInputChange } = useForms(initialState);
+	const { formData, handleInputChange } = useForms(initialState);
 
 	const { Username, Password, PasswordConfirm } = formData;
 

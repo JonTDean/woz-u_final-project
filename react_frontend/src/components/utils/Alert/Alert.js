@@ -6,16 +6,16 @@ import { connect } from 'react-redux';
 import AlertComponent from './AlertComponent';
 
 const Alert = ({ alerts }) => {
-	console.log(alerts);
+	// console.log(alerts);
 	return (
 		<>
 			{alerts !== null &&
 				alerts.length > 0 &&
 				alerts.map((alert) => {
 					return (
-						<>
-							<AlertComponent alert={alert} />;
-						</>
+						<div key={`key_${alert.id}`}>
+							<AlertComponent alert={alert} />
+						</div>
 					);
 				})}
 		</>

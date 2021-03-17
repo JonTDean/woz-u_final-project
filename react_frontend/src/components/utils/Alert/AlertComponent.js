@@ -15,10 +15,10 @@ const useStyles = makeStyles((theme) => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
-		marginTop: '3em',
-		'& > *': {
-			margin: theme.spacing(1),
-		},
+		// marginTop: '3em',
+		// '& > *': {
+		// margin: theme.spacing(1),
+		// },
 	},
 }));
 
@@ -37,31 +37,43 @@ function AlertComponent({ alert: { alertType, msg, id } }) {
 	};
 
 	return (
-		<div className={classes.root} key={id}>
-			<Dialog
-				open={open}
-				onClose={handleClose}
-				aria-labelledby="alert-dialog-title"
-				aria-describedby="alert-dialog-description"
+		<Dialog
+			open={open}
+			onClose={handleClose}
+			aria-labelledby="alert-dialog-title"
+			aria-describedby="alert-dialog-description"
+			key={`${id}_${new Date().getTime() / 1000 + new Date().getTime() / 1000}`}
+			className={classes.root}
+		>
+			<DialogTitle
+				color={alertType}
+				id={`alert-${alertType}`}
+				key={`${id}_${alertType}_left`}
 			>
-				<DialogTitle color={alertType} id={`alert-${alertType}`}>
-					<Typography color={alertType}>
-						{`${alertType[0].toUpperCase() + alertType.substring(1)}`}
-					</Typography>
-				</DialogTitle>
+				<Typography color="inherit" key={`${id}_${alertType}_left-text`}>
+					{`${alertType[0].toUpperCase() + alertType.substring(1)}`}
+				</Typography>
+			</DialogTitle>
 
-				<DialogContent id={`dialog-${alertType}`}>
-					<Typography color={alertType}>
-						{`${msg[0].toUpperCase() + msg.substring(1)}`}
-					</Typography>
-				</DialogContent>
-				<DialogActions>
-					<Button onClick={handleClose} variant="contained" color="primary">
-						Ok
-					</Button>
-				</DialogActions>
-			</Dialog>
-		</div>
+			<DialogContent
+				id={`dialog-${alertType}`}
+				key={`${id}_${alertType}_right`}
+			>
+				<Typography color="inherit" key={`${id}_${alertType}_$right-text`}>
+					{`${msg[0].toUpperCase() + msg.substring(1)}`}
+				</Typography>
+			</DialogContent>
+			<DialogActions key={`${id}_${alertType}_button-menu`}>
+				<Button
+					onClick={handleClose}
+					variant="contained"
+					color="primary"
+					key={`${id}_${alertType}_button`}
+				>
+					Ok
+				</Button>
+			</DialogActions>
+		</Dialog>
 	);
 }
 

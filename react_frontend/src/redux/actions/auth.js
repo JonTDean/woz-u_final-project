@@ -1,3 +1,4 @@
+// React
 import axios from 'axios';
 // Redux
 import {
@@ -16,20 +17,25 @@ import setAuthToken from '../../components/utils/authToken';
 
 // Load User
 export const LoadUser = () => async (dispatch) => {
-	if (localStorage.token) {
+	if (
+		localStorage.token !== undefined &&
+		localStorage.token.length >= 1 &&
+		localStorage.token
+	) {
 		setAuthToken(localStorage.token);
-	}
 
-	try {
-		const currentUser = JSON.parse(localStorage.getItem('user'));
+		const currentPayload = {
+			token: localStorage.getItem('token'),
+			username: localStorage.getItem('user'),
+		};
 
-		console.log(currentUser);
+		// console.log('Current Payload is', currentPayload);
 
 		dispatch({
 			type: USER_LOADED,
-			payload: currentUser,
+			payload: currentPayload,
 		});
-	} catch (err) {
+	} else {
 		dispatch({
 			type: AUTH_ERROR,
 		});
@@ -69,7 +75,7 @@ export const Register = ({ Username, Password }) => async (dispatch) => {
 		dispatch({
 			type: REGISTER_FAIL,
 		});
-		console.log(err.response.data);
+		// console.log(err.response.data);
 	}
 };
 
@@ -90,31 +96,34 @@ export const Login = ({ Username, Password }) => async (dispatch) => {
 		});
 
 		const resp = await axios.post(apiURL, body, config);
-
+		// console.log(resp);
 		dispatch({
 			type: LOGIN_SUCCESS,
 			payload: resp.data,
 		});
 
-		console.log('SUCCESSFULLY LOGGED IN', resp.data);
+		// console.log('SUCCESSFULLY LOGGED IN', resp.data);
 
 		dispatch(setAlert('Successfully logged in!', 'success'));
 		// console.log('Data is: ', resp.data);
 	} catch (err) {
 		const errors = err.response.data.errors;
 
-		if (errors) {
-			errors.forEach((err) => dispatch(setAlert(err.msg, 'error')));
+		if (Array.isArray(errors)) {
+			errors.forEach((error) => dispatch(setAlert(error.msg, 'error')));
 		}
 
 		dispatch({
 			type: LOGIN_FAIL,
 		});
-		console.log(err.response.data);
+		// console.log(err.response.data);
+		dispatch(setAlert(err.response.data, 'error'));
 	}
 };
 
 // Logout User
 export const Logout = () => (dispatch) => {
-	dispatch({ type: LOGOUT });
+	dispatch(setAlert('Successfully logged out!', 'success'));
+
+	return dispatch({ type: LOGOUT });
 };

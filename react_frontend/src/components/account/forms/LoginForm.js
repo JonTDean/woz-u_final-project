@@ -17,7 +17,7 @@ const initialState = {
 };
 
 function LoginForm({ Login, isAuthenticated }) {
-	const { formData, setFormData, handleInputChange } = useForms(initialState);
+	const { formData, handleInputChange } = useForms(initialState);
 
 	const { Username, Password } = formData;
 
