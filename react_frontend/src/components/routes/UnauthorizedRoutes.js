@@ -5,7 +5,7 @@ import { Route, Switch, withRouter } from 'react-router-dom';
 import RegisterForm from '../account/forms/RegisterForm';
 import LoginForm from '../account/forms/LoginForm';
 
-// For whenever the user is not authorized (Read as Logged in)
+// For whenever the user is not authorized (Read as not Logged in)
 // These routes will be the only ones available to them.
 function UnauthorizedRoutes() {
 	return (

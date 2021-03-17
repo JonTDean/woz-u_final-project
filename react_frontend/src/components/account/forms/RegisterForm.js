@@ -1,28 +1,34 @@
 // React
 import React from 'react';
 import useForms, { FormContainer } from '../../../hooks/useForms';
+import { Redirect } from 'react-router-dom';
 // Redux
 import { connect } from 'react-redux';
 import { setAlert } from '../../../redux/actions/alert';
+import { Register } from '../../../redux/actions/auth';
 import PropTypes from 'prop-types';
 // MaterialUI
 import { Grid, TextField, Button } from '@material-ui/core';
 // Utils
-import Register from '../../utils/API/Users/Register';
+// import Register from '../../utils/API/Users/Register';
 // Components
 import LoginReroute from './misc/LoginReroute';
 
 const initialState = {
-	username: '',
-	password: '',
-	passwordConfirm: '',
+	Username: '',
+	Password: '',
+	PasswordConfirm: '',
 };
 
 // Registration form with Material Design
-function RegisterForm({ setAlert }) {
+function RegisterForm({ setAlert, Register, isAuthenticated }) {
 	const { formData, setFormData, handleInputChange } = useForms(initialState);
 
-	const { username, password, passwordConfirm } = formData;
+	const { Username, Password, PasswordConfirm } = formData;
+
+	if (isAuthenticated) {
+		return <Redirect exact path to="/" />;
+	}
 
 	return (
 		<Grid container direction="column" justify="center" alignItems="center">
@@ -30,31 +36,32 @@ function RegisterForm({ setAlert }) {
 				<TextField
 					variant="outlined"
 					label="Username"
-					name="username"
-					value={username}
+					name="Username"
+					value={Username}
 					onChange={handleInputChange}
 				/>
 				<TextField
 					variant="outlined"
 					label="Password"
-					name="password"
-					value={password}
+					name="Password"
+					value={Password}
 					onChange={handleInputChange}
 				/>
 				<TextField
 					variant="outlined"
 					label="Password Confirmation"
-					name="passwordConfirm"
-					value={passwordConfirm}
+					name="PasswordConfirm"
+					value={PasswordConfirm}
 					onChange={handleInputChange}
 				/>
 				<Button
-					color="inherit"
-					onClick={(e) =>
-						handleSubmit(e, setAlert, username, password, passwordConfirm)
-					}
-					variant="contained"
 					color="primary"
+					onClick={(e) => {
+						if (handleSubmit(e, setAlert, Password, PasswordConfirm)) {
+							Register({ Username, Password });
+						}
+					}}
+					variant="contained"
 				>
 					Register
 				</Button>
@@ -64,17 +71,24 @@ function RegisterForm({ setAlert }) {
 	);
 }
 
-function handleSubmit(e, alert, username, password, passwordConfirm) {
+function handleSubmit(e, alert, Password, PasswordConfirm) {
 	e.preventDefault();
-	if (password !== passwordConfirm) {
-		alert('Passwords do not match!', 'danger');
+	if (Password !== PasswordConfirm) {
+		alert('Passwords do not match!', 'error');
+		return false;
 	} else {
-		Register({ username, password });
+		return true;
 	}
 }
 
 Register.propTypes = {
 	setAlert: PropTypes.func.isRequired,
+	Register: PropTypes.func.isRequired,
+	isAuthenticated: PropTypes.bool,
 };
 
-export default connect(null, { setAlert })(RegisterForm);
+const mapStateToProps = (state) => ({
+	isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { setAlert, Register })(RegisterForm);

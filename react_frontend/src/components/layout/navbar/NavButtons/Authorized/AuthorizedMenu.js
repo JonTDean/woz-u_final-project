@@ -1,13 +1,15 @@
 // React
 import React, { useState } from 'react';
-// Material-UI
-import Menu from '@material-ui/core/Menu';
+// Redux
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+// Material
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
+import Menu from '@material-ui/core/Menu';
 import MenuIcon from '@material-ui/icons/Menu';
-// Menu Buttons
-import LoginButton from './LoginButton';
-import RegisterButton from './RegisterButton';
+// Component
+import LogoutButton from './LogoutButton';
 
 const centerStyles = makeStyles((theme) => ({
 	root: {
@@ -20,7 +22,7 @@ const centerStyles = makeStyles((theme) => ({
 	},
 }));
 
-function UnauthorizedMenu() {
+export const AuthorizedMenu = (props) => {
 	const classes = centerStyles();
 	const [anchorEl, setAnchorEl] = useState(null);
 
@@ -51,11 +53,15 @@ function UnauthorizedMenu() {
 				open={Boolean(anchorEl)}
 				onClose={handleClose}
 			>
-				<LoginButton onClick={handleClose} />
-				<RegisterButton onClick={handleClose} />
+				<LogoutButton onClick={handleClose} />
 			</Menu>
 		</>
 	);
-}
+};
 
-export default UnauthorizedMenu;
+AuthorizedMenu.propTypes = {
+	props: PropTypes,
+};
+
+const mapStateToProps = (state) => ({});
+export default connect(mapStateToProps)(AuthorizedMenu);

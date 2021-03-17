@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles((theme) => ({
@@ -44,13 +44,16 @@ function AlertComponent({ alert: { alertType, msg, id } }) {
 				aria-labelledby="alert-dialog-title"
 				aria-describedby="alert-dialog-description"
 			>
-				<DialogTitle id={`alert-${alertType}`}>{`${
-					alertType[0].toUpperCase() + alertType.substring(1)
-				}`}</DialogTitle>
+				<DialogTitle color={alertType} id={`alert-${alertType}`}>
+					<Typography color={alertType}>
+						{`${alertType[0].toUpperCase() + alertType.substring(1)}`}
+					</Typography>
+				</DialogTitle>
+
 				<DialogContent id={`dialog-${alertType}`}>
-					<DialogContentText id={`dialog-text-${alertType}`}>
+					<Typography color={alertType}>
 						{`${msg[0].toUpperCase() + msg.substring(1)}`}
-					</DialogContentText>
+					</Typography>
 				</DialogContent>
 				<DialogActions>
 					<Button onClick={handleClose} variant="contained" color="primary">

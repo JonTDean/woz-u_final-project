@@ -1,32 +1,29 @@
 // React
 import React from 'react';
-import useForms, { FormContainer } from '../../../hooks/useForms';
+import { Redirect } from 'react-router-dom';
+// Redux
+import { connect } from 'react-redux';
+import { Login } from '../../../redux/actions/auth';
+import PropTypes from 'prop-types';
 // MaterialUI
 import { Grid, TextField, Button } from '@material-ui/core';
-// Utils
-import Login from '../../utils/API/Users/Login';
 // Components
+import useForms, { FormContainer } from '../../../hooks/useForms';
 import RegisterReroute from './misc/RegisterReroute';
 
 const initialState = {
-	username: '',
-	password: '',
+	Username: '',
+	Password: '',
 };
 
-function LoginForm() {
+function LoginForm({ Login, isAuthenticated }) {
 	const { formData, setFormData, handleInputChange } = useForms(initialState);
 
-	const { username, password } = formData;
+	const { Username, Password } = formData;
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		const userAccount = {
-			username,
-			password,
-		};
-
-		Login(userAccount);
-	};
+	if (isAuthenticated) {
+		return <Redirect exact path to="/" />;
+	}
 
 	return (
 		<Grid container direction="column" justify="center" alignItems="center">
@@ -34,22 +31,24 @@ function LoginForm() {
 				<TextField
 					variant="outlined"
 					label="Username"
-					name="username"
-					value={username}
+					name="Username"
+					value={Username}
 					onChange={handleInputChange}
 				/>
 				<TextField
 					variant="outlined"
 					label="Password"
-					name="password"
-					value={password}
+					name="Password"
+					value={Password}
 					onChange={handleInputChange}
 				/>
 				<Button
-					color="inherit"
-					onClick={handleSubmit}
-					variant="contained"
 					color="primary"
+					onClick={(e) => {
+						e.preventDefault();
+						Login({ Username, Password });
+					}}
+					variant="contained"
 				>
 					Login
 				</Button>
@@ -59,4 +58,13 @@ function LoginForm() {
 	);
 }
 
-export default LoginForm;
+Login.propTypes = {
+	Login: PropTypes.func.isRequired,
+	isAuthenticated: PropTypes.bool,
+};
+
+const mapStateToProps = (state) => ({
+	isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { Login })(LoginForm);
