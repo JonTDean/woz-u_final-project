@@ -32,18 +32,24 @@ const useStyles = makeStyles((theme) => ({
 		padding: '1em',
 	},
 }));
-function NavbarMain({ isAuthenticated, loading }) {
+
+function NavbarMain({ isAuthenticated, user }) {
 	const classes = useStyles();
+
+	// console.log('Authenticate: ', isAuthenticated);
+	// console.log('Username: ', user);
+	if (user !== null && user !== undefined) {
+		user = user[0].toUpperCase() + user.substring(1);
+	}
 
 	return (
 		<AppBar position="static">
 			<Toolbar variant="dense" className={classes.navbarMenu}>
-				{!loading &&
-					(isAuthenticated ? (
-						<AuthenticatedNavbar />
-					) : (
-						<UnauthenticatedNavbar />
-					))}
+				{isAuthenticated ? (
+					<AuthenticatedNavbar username={user} />
+				) : (
+					<UnauthenticatedNavbar />
+				)}
 			</Toolbar>
 		</AppBar>
 	);
@@ -51,11 +57,12 @@ function NavbarMain({ isAuthenticated, loading }) {
 
 NavbarMain.propTypes = {
 	isAuthenticated: PropTypes.bool,
+	user: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({
-	// user: state.user,
 	isAuthenticated: state.auth.isAuthenticated,
+	user: state.auth.user,
 });
 
 export default connect(mapStateToProps, null)(NavbarMain);

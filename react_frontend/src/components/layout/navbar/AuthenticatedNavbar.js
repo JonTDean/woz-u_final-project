@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 	},
 }));
 
-function AuthenticatedNavbar() {
+function AuthenticatedNavbar({ username }) {
 	const classes = useStyles();
 
 	return (
@@ -43,7 +43,7 @@ function AuthenticatedNavbar() {
 
 			<div className={classes.navbarRight}>
 				<Typography variant="h6" color="inherit">
-					Welcome User
+					Welcome {username}
 				</Typography>
 			</div>
 		</div>

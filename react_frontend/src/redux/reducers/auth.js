@@ -9,7 +9,7 @@ import {
 } from '../actions/types';
 
 const initialState = {
-	token: localStorage.getItem('token'),
+	token: null,
 	isAuthenticated: null,
 	loading: true,
 	user: null,
@@ -30,6 +30,7 @@ function auth(state = initialState, action) {
 		case REGISTER_SUCCESS:
 		case LOGIN_SUCCESS:
 			localStorage.setItem('token', payload.token);
+			localStorage.setItem('user', payload.username);
 			return {
 				...state,
 				...payload,
